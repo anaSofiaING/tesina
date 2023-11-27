@@ -1,0 +1,102 @@
+<div class="container">
+  <br>
+  <div class="btn-toolbar justify-content-between">
+  <h3>PROVEEDORES</h3>
+<!-- Modal para registrar proveedores -->
+<button type="button" class="btn text-white naranjita" data-toggle="modal" data-target="#exampleModal">
+    Registrar Proveedor
+  </button>
+  </div>
+  <br>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Nuevo Proveedor</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                  <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nuevo.nombre">
+                  </div>
+                
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="telefono1">Teléfono 1:</label>
+                    <input type="number" class="form-control" id="telefono1" name="telefono1" [(ngModel)]="nuevo.telefono1">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="ext1">Ext:</label>
+                    <input type="number" class="form-control" id="ext1" name="ext1" [(ngModel)]="nuevo.ext1">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="telefono2">Teléfono 2:</label>
+                    <input type="number" class="form-control" id="telefono2" name="telefono2" [(ngModel)]="nuevo.telefono2">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="ext2">Ext:</label>
+                    <input type="number" class="form-control" id="ext2" name="ext2" [(ngModel)]="nuevo.ext2">
+                  </div>
+                </div>  
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="celular1">Celular 1:</label>
+                    <input type="number" class="form-control" id="celular1" name="celular1" [(ngModel)]="nuevo.celular1">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="celular2">Celular 2:</label>
+                    <input type="number" class="form-control" id="celular2" name="celular2"  [(ngModel)]="nuevo.celular2">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="nuevo.direccion">
+                </div>
+                <div class="form-group">
+                  <label for="notas">Notas:</label><br>
+                   <textarea name="notas" id="notas" cols="60" rows="3" name="notas" [(ngModel)]="nuevo.notas"></textarea>
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="guardarDatos()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead style="background: rgb(180,175,175);
+    background: linear-gradient(90deg, rgba(180,175,175,0.9131302179074755) 100%, rgba(114,114,114,1) 100%);">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Refaccionaria</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Celular</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let proveedor of proveedores">
+        <th scope="row">{{proveedor.id}}</th>
+        <td>{{proveedor.nombre}}</td>
+        <td>{{proveedor.telefono1}} {{proveedor.ext1}} <br> {{proveedor.telefono2}}  {{proveedor.ext2}}</td>
+        <td>{{proveedor.celular1}}</td>
+        <td>{{proveedor.direccion}}</td>
+        <td>{{proveedor.notas}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

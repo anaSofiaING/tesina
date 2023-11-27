@@ -1,0 +1,20 @@
+<div id="home" class="first_paage">
+  <div class="wrapper">
+    <div class="nav">
+      <ul class="navbar">
+        <li><a
+            (click)="cambiarContenido('Misión', 'Satisfacer las necesidades de mantenimiento automotriz, a través de diferentes servicios que se acoplen a las necesidades del cliente y del vehiculo.', '/assets/misionimg.png')">Misión</a>
+        </li>
+        <li><a (click)="cambiarContenido('Visión', 'Ser una empresa confiable, bien administrada, con finanzas sanas y con personal bien capacitado que los proveedores se interesen en nosotros y que los clientes nos prefieran, cumplir nuestros compromisos oportuna y cabalmente.', '/assets/visionomg.png')">Visión</a></li>
+        <li><a
+            (click)="cambiarContenido('Principios', 'Garantizar la mejor relación en el mercado de servicio-producto-precio, a través de nuestros servicios. De igual manera con nuestros compromisos y relaciones laborales, y así asegurar un beneficio mutuo y de calidad.', '/assets/principiosimg.png')">Principios</a>
+        </li>
+      </ul>
+    </div>
+    <div class="Contenido">
+      <div class="header header_home">{{ titulo }}</div>
+      <div class="content content_home">{{ descripcion }}</div>
+      <div class="image" [style.background-image]="'url(' + imagenUrl + ')'"></div>
+    </div>
+  </div>
+</div>

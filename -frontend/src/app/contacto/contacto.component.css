@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@800&display=swap');
+
+.divForm {
+  background: rgba(0, 0, 0, 0.15);
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 35px;
+  border-radius: 15px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.col {
+  width: 100%;
+  padding: 0 10px;
+  /* Added padding to improve responsiveness */
+  box-sizing: border-box;
+  /* Ensures padding doesn't increase element width */
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 95%;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 10px;
+  /* Added margin between inputs */
+  box-sizing: border-box;
+  /* Ensures padding doesn't increase element width */
+}
+
+textarea {
+  width: 95%;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 10px;
+  /* Added margin between textarea and inputs */
+  box-sizing: border-box;
+  /* Ensures padding doesn't increase element width */
+}
+
+.buttonEnviar {
+  border-radius: 15px;
+  width: 95%;
+  background: linear-gradient(to right, rgb(254, 51, 51), rgb(255, 142, 76));
+  color: white;
+  font-size: 18px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+h3 {
+  font-family: 'Mulish', sans-serif;
+  color: rgb(254, 51, 51);
+  font-size: 24px;
+}
+
+.divMap {
+  width: 100%;
+  max-width: 450px;
+  height: 330px;
+  margin: 5px auto;
+  border: solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.social-links {
+  display: flex;
+  margin-left: 10px;
+}
+
+.social-links a {
+  margin-right: 20px;
+}
+
+h2{
+  font-family: 'Mulish', sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .divMap {
+    width: 90%;
+  }
+
+  h3 {
+    margin-left: 20px;
+  }
+
+  h2 {
+    margin-left: 20px;
+  }
+
+
+  label {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    margin-left: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  textarea {
+    width: 90%;
+    margin-left: 20px;
+  }
+
+  .buttonEnviar{
+    width: 90%;
+    margin: 20px;
+  }
+}

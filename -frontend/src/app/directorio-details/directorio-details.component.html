@@ -1,0 +1,89 @@
+<div class="container">
+    <div *ngIf="perfil.id" class="edit-form">
+      <br>
+      <h4>Editando a {{perfil.nombre}}</h4>
+      <br>
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="perfil.nombre"
+            name="nombre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="celular">Celular</label>
+          <input
+            type="number"
+            class="form-control"
+            id="celular"
+            [(ngModel)]="perfil.celular"
+            name="celular"
+          />
+        </div>
+       <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input
+            type="number"
+            class="form-control"
+            id="telefono"
+            [(ngModel)]="perfil.telefono"
+            name="telefono"
+          />
+        </div>
+        <div class="form-group">
+          <label for="vehiculo">Celular</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vehiculo"
+            [(ngModel)]="perfil.vehiculo"
+            name="vehiculo"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Observaciones">Observaciones</label>
+          <input
+            type="text"
+            class="form-control"
+            id="observaciones"
+            [(ngModel)]="perfil.observaciones"
+            name="observaciones"
+          />
+        </div> 
+  
+      </form>
+      
+      <button
+        class="btn btn-info "
+        (click)="regresar()"
+      >
+        Regresar
+      </button>
+   
+      <button class="btn btn-danger " (click)="deleteUser()">
+        Borrar Registro
+      </button>
+  
+      <button
+        type="submit"
+        class="btn btn-success "
+        (click)="updateValores()"
+      >
+        Guardar Cambios
+      </button>
+      <br>
+      <div class="alert alert-primary" *ngIf="message" role="alert">
+        
+      {{ message }}
+      </div>
+    </div>
+  
+    <div *ngIf="!perfil.id">
+      <br />
+      <p>No se puede acceder al registro...</p>
+    </div>
+</div>

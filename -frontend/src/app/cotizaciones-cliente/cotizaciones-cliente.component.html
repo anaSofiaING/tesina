@@ -1,0 +1,80 @@
+
+<div class="container">
+  <button (click)="exportToPdf()">Exportar a PDF</button>
+
+  <table class="table table-bordered" id="Micotizacion">
+    <thead>
+      <tr>
+        <th scope="col">AAA</th>
+        <th scope="col" colspan="5">{{servicio.cliente}}</th>
+        <th scope="col">Folio</th>
+        <th scope="col" colspan="1"> {{cotizacion.id}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Cliente</th>
+        <th scope="col" colspan="4">{{servicio.cliente}}</th>
+        <th scope="col">Fecha</th>
+        <th scope="col" colspan="2"> {{cotizacion.createdAt | date: 'd/M/yyyy'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Información del cliente y servicio -->
+      <tr>
+        <th scope="row">Celular</th>
+        <td colspan="3">{{servicio.celular}}</td>
+        <td>Marca</td>
+        <td>{{servicio.marca}}</td>
+        <td>Color</td>
+        <td>{{servicio.color}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Dirección</th>
+        <td colspan="3"></td>
+        <td>Modelo</td>
+        <td>{{servicio.modelo}}</td>
+        <td>Placas</td>
+        <td>{{servicio.placas}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contacto</th>
+        <td colspan="3"></td>
+        <th scope="row">Tipo</th>
+        <td>{{servicio.tipo}}</td>
+        <th scope="row">Kilometraje</th>
+        <td></td>
+      </tr>
+      <!-- Información de Productos/Servicios -->
+      <tr>
+        <th scope="row" colspan="5">Producto/Servicio</th>
+        <th scope="row">Cantidad</th>
+        <th scope="row">Precio Unitario</th>
+        <th scope="row">Precio Total</th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td colspan="5">{{item.producto}}</td>
+        <td>{{item.cantidad}}</td>
+        <td>{{item.precioUnitario}}</td>
+        <td>{{ calcularPrecioTotal(item) }}</td>
+      </tr>
+      <!-- Resumen de Costos -->
+      <tr>
+      <td colspan="5" rowspan="3"></td>
+        <td colspan="2"><strong>Subtotal:</strong></td>
+        <td colspan="2">{{ subtotal | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>IVA (16%):</strong></td>
+        <td colspan="2">{{ iva | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Total:</strong></td>
+        <td colspan="2">{{ cotizacion.total | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+      <!-- Nota -->
+      <tr>
+        <th scope="row">Nota:</th>
+        <td colspan="7">{{cotizacion.nota}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

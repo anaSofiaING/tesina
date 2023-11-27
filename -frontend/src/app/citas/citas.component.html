@@ -1,0 +1,152 @@
+<div [ngSwitch]="rol">
+  <div *ngSwitchCase="'ROLE_CLIENTE'" class="container">
+    <form>
+      <br>
+      <div class="alert alert-info" *ngIf="mensaje" role="alert">
+        {{mensaje}}
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          
+          <h4>DATOS DEL CLIENTE</h4> <br>
+          <label for="cliente">Nombre: {{currentUser.username}}</label> <br>
+          <label for="cliente">Celular: {{currentUser.celular}}</label>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="f_entrada">Fecha</label>
+          <input type="date" class="form-control" id="f_entrada" [(ngModel)]="cita.f_entrada" name="f_entrada">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="hora">Horario</label>
+          <select id="hora" class="form-control" [(ngModel)]="cita.hora" name="hora">
+            <option selected>8:30 am</option>
+            <option>9:00 am</option>
+            <option>10:00 am</option>
+            <option>11:00 am</option>
+            <option>12:00 am</option>
+            <option>1:00 pm</option>
+            <option>2:00 pm</option>
+            <option>3:00 pm</option>
+            <option>4:00 pm</option>
+            <option>5:00 pm</option>
+            <option>6:00 pm</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="vehiculo">Marca</label>
+        <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: VW " id="marca" required
+          [(ngModel)]="cita.marca" name="marca">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="vehiculo">Tipo</label>
+        <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: Jetta" id="tipo" required
+          [(ngModel)]="cita.tipo" name="tipo">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="vehiculo">Modelo</label>
+        <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: 2004" id="modelo" required
+          [(ngModel)]="cita.modelo" name="modelo">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="vehiculo">Color</label>
+        <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: Rojo" id="color" required
+           name="color" [(ngModel)]="cita.color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción del problema</label> <br>
+        <textarea  class="form-control" rows="6" id="descripcion" required [(ngModel)]="cita.descripcion"
+          name="descripcion"></textarea>
+      </div>
+      
+
+
+      <button type="submit" (click)="saveMiCita()" class="btn text-white naranjita">Confirmar Cita</button>
+    </form>
+  </div>
+
+
+  <div *ngSwitchCase="'ROLE_ADMIN'">
+
+    
+    <div class="container" >
+      <br>
+      <h3>AGENDAR CITA</h3>
+      <br>
+      <div class="alert alert-primary" *ngIf="submitted" role="alert">
+        Cita registrada con éxito!
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="cliente">Nombre</label>
+            <input type="text" class="form-control" placeholder="Ejemplo: {{currentUser.username}}" id="cliente"
+              required [(ngModel)]="cita.cliente" name="cliente">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="celular">Celular</label>
+            <input type="number" class="form-control" placeholder="Ejemplo: {{currentUser.celular}}" id="celular"
+              required [(ngModel)]="cita.celular" name="celular">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="vehiculo">Marca</label>
+          <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: VW " id="marca" required
+            [(ngModel)]="cita.marca" name="marca">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="vehiculo">Tipo</label>
+          <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: Jetta" id="tipo" required
+            [(ngModel)]="cita.tipo" name="tipo">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="vehiculo">Modelo</label>
+          <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: 2004" id="modelo" required
+            [(ngModel)]="cita.modelo" name="modelo">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="vehiculo">Color</label>
+          <input type="text" class="form-control" id="vehiculo" placeholder="Ejemplo: Rojo" id="color" required
+             name="color" [(ngModel)]="cita.color">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción del problema</label> <br>
+          <textarea class="form-control" rows="5" id="descripcion" required [(ngModel)]="cita.descripcion"
+            name="descripcion"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="f_entrada">Fecha</label>
+            <input type="date" class="form-control" id="f_entrada" [(ngModel)]="cita.f_entrada" name="f_entrada">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="hora">Horario</label>
+            <select id="hora" class="form-control" [(ngModel)]="cita.hora" name="hora">
+              <option selected>8:30 am</option>
+              <option>9:00 am</option>
+              <option>10:00 am</option>
+              <option>11:00 am</option>
+              <option>12:00 am</option>
+              <option>1:00 pm</option>
+              <option>2:00 pm</option>
+              <option>3:00 pm</option>
+              <option>4:00 pm</option>
+              <option>5:00 pm</option>
+              <option>6:00 pm</option>
+            </select>
+          </div>
+        </div>
+
+
+        <button type="submit" (click)="saveCita()" class="btn text-white naranjita">Confirmar Cita</button>
+      </form>
+    </div>
+  </div>
+</div>

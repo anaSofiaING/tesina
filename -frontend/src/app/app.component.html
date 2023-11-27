@@ -1,0 +1,125 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark" style="background: black;">
+    <a href="#" class="navbar-brand" style="color: red;">AAA</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/contacto" class="nav-link" routerLink="contacto">Contacto</a>
+      </li>
+      <li class="nav-item">
+        <a href="/nosotros" class="nav-link" routerLink="nosotros">Nosotros</a>
+      </li>
+      <li class="nav-item">
+        <a href="/oferta" class="nav-link" routerLink="oferta">Servicios</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" style="color: aqua;font-size: larger;">
+      \ \ \
+    </ul>
+
+    <!--  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul> -->
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item" *ngIf="showClientBoard">
+        <a href="/user" class="nav-link" style="color: white;font-size: larger;" routerLink="user">{{ username }}</a>
+      </li>
+      <li class="nav-item" *ngIf="showWorkerBoard">
+        <a href="/mod" class="nav-link" style="color: white;font-size: larger;" routerLink="mod">{{ username }}</a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" style="color: white;font-size: larger;" routerLink="admin">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" style="color: white;font-size: larger;" (click)="logout()">Salir</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="row" *ngIf="showClientBoard">
+    <div class="col col-lg-2 ">
+      
+      <ul class="nav flex-column sticky-top">
+        <li class="nav-item">
+          <a class="nav-link" href="/servicios" routerLink="/servicios">SERVICIOS EN CURSO</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/citas" routerLink="/citas">CITAS</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/cotizaciones" routerLink="/cotizaciones">COTIZACIONES</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="col" style="height: 120vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showWorkerBoard">
+    <div class="col col-lg-2 ">
+      
+      <ul class="nav flex-column sticky-top">
+        <li class="nav-item">
+          <a class="nav-link" href="/servicios" routerLink="/servicios">SERVICIOS EN CURSO</a>
+        </li>
+        <div class="dropdown-divider"></div>
+      </ul>
+    </div>
+    
+    <div class="col" style="height: 120vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showAdminBoard">
+    <div class="col col-lg-2 ">
+      
+      <ul class="nav flex-column sticky-top">
+        <li class="nav-item">
+          <a class="nav-link active" href="/detalles" routerLink="/detalles">DETALLES</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/directorio" routerLink="/directorio">DIRECTORIO</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/citas" routerLink="/citas">CITAS</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/servicios" routerLink="/servicios">SERVICIOS</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/cotizaciones" routerLink="/cotizaciones">COTIZACIONES</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/proveedores" routerLink="/proveedores">PROVEEDORES</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li class="nav-item">
+          <a class="nav-link" href="/administracion" routerLink="/administracion">ADMINISTRACION</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="col" style="height: 170vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div *ngIf="!isLoggedIn">
+   <router-outlet></router-outlet></div>
+
+</div>

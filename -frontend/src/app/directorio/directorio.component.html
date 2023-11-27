@@ -1,0 +1,40 @@
+<div class="container">
+  <br>
+  <h3>DIRECTORIO</h3>
+  <div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+
+      <button type="button" class="btn text-white" style="background-color: #FFE53B;
+      background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);" (click)="nuevoCliente()">Registrar Cliente</button>
+    </div>
+    <div class="input-group">
+      <input class="form-control mr-sm-2" [(ngModel)]="buscaNombre" name="buscaNombre">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarCliente()">BUSCAR</button>
+    </div>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Celular</th>
+        <th scope="col">Vehiculo</th>
+        <th scope="col">Observaciones</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of clientes">
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.telefono}}</td>
+        <td>{{usuario.celular}}</td>
+        <td>{{usuario.vehiculo}}</td>
+        <td>{{usuario.observaciones}}</td>
+        <td><button class="btn naranjita" (click)="detalles(usuario.id)"><img src="../../assets/Dir-editar.png" alt=""></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

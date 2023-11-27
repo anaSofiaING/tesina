@@ -1,0 +1,62 @@
+<div class="container">
+    <br>
+    <div class="card-columns">
+
+
+        <div class="card mb-3 bg-secondary" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="../../assets/herramienta.png" height="80%">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">{{tServicios}} Servicios</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3 bg-secondary" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="../../assets/car.png">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+
+                        <h2 class="card-title">  {{tActivos}}    En Piso</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 bg-secondary" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="../../assets/icono-clientes.png">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">{{tClientes}} Clientes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr style="background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);">
+
+    <div class="container">
+        <h3>VENTAS DE 2022 Y 2023</h3>
+
+        <div class="container" style="width: 85%;">
+            <canvas id="chart">{{ chart }}</canvas>
+        </div>
+    </div>
+    <div class="container">
+        <h3>SERVICIOS DE 2022 Y 2023</h3>
+        <div class="container" style="width: 85%;">
+            <canvas id="chartServicios">{{ chartServicios }}</canvas>
+        </div>
+    </div>
+</div>

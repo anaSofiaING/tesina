@@ -1,0 +1,128 @@
+
+<div class="container" *ngIf="showAdmin">
+  <br>
+  <h3>Nueva Cotización</h3>
+  <!-- Button trigger modal -->
+  <div class="btn-toolbar justify-content-between" > 
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Buscar Servicio
+  </button>
+  <div class="alert alert-success" *ngIf="submitted" role="alert">
+    ¡Cotización guardada con éxito!
+  </div>
+  <button type="button" class="btn btn-success" (click)="crearCotizacion()">Guardar</button>
+  </div>
+  <br>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Servicios Vigentes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="">Escoja el servicio del que quiere crear la cotización</label>
+          <div class="form-check" *ngFor="let activo of servicios">
+            <input class="form-check-input" type="radio" name="idservicio" [(ngModel)]="nuevaCotizacion.idservicio"
+              id="idservicio" value="{{activo.id}}" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              {{activo.tipo}} - {{activo.cliente}}
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="aplicarDatos()" data-dismiss="modal">Escoger</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Cliente</th>
+        <th scope="col" colspan="3">{{servicioAct.cliente}}</th>
+        <th scope="col">Fecha</th>
+        <th scope="col" colspan="3">{{nuevaCotizacion.createdAt}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Celular</th>
+        <td colspan="3">{{servicioAct.celular}}</td>
+        <td>Marca</td>
+        <td>{{servicioAct.marca}}</td>
+        <td>Color</td>
+        <td>{{servicioAct.color}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Dirección</th>
+        <td colspan="3"></td>
+        <td>Modelo</td>
+        <td>{{servicioAct.modelo}}</td>
+        <td>Placas</td>
+        <td>{{servicioAct.placas}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contacto</th>
+        <td colspan="3"></td>
+        <th scope="row">Tipo</th>
+        <td>{{servicioAct.tipo}}</td>
+        <th scope="row">Kilometraje</th>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+    
+    <tbody>
+      <tr>
+        <th scope="row" colspan="4">Producto/Servicio</th>
+        <th scope="row">Cantidad</th>
+        <th scope="row">Precio Unitario</th>
+        <th scope="row">Precio Total</th>
+      </tr>
+      <tr *ngFor="let item of items; let i = index">
+        <td colspan="4"><input type="text" class="form-control" [(ngModel)]="item.producto"></td>
+        <td><input type="number" class="form-control" [(ngModel)]="item.cantidad"></td>
+        <td><input type="number" class="form-control" [(ngModel)]="item.precioUnitario"></td>
+        <td><input type="number" class="form-control" [value]="item.cantidad * item.precioUnitario" disabled></td>
+        <td><button type="button" class="btn btn-danger" (click)="eliminarFila(i)">X</button></td>
+      </tr>
+
+      <tr>
+        <td colspan="8"><button type="button" class="btn btn-info" (click)="agregarFila()">+</button></td>
+      </tr>
+    </tbody>
+  </table>
+      <table class="table table-bordered">
+    
+        <tbody>
+      <tr>
+        <td colspan="3" rowspan="3"><button type="button" class="btn btn-warning" (click)="actualizarCalculos();">Calcular Total</button></td>
+        <td colspan="3"><strong>Subtotal:</strong></td>
+        <td>{{ subtotal | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>IVA (16%):</strong></td>
+        <td>{{ iva | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>Total:</strong></td>
+        <td>{{ total | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+
+
+      <tr>
+        <th scope="row">Nota:</th>
+        <th colspan="7"><textarea  name="nota" [(ngModel)]="nuevaCotizacion.nota"
+          id="nota"  rows="3" class="form-control" placeholder="Esta cotización es válida hasta 30 días después de su expedición.">Esta cotización es válida hasta 30 días después de su expedición.</textarea></th>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

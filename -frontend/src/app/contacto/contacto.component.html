@@ -1,0 +1,46 @@
+
+
+<div class="divForm">
+  <form (ngSubmit)="enviar(form.value)" #form="ngForm">
+    <div class="row">
+      <div class="col">
+        <br><br>
+        <h3 style="margin-left: 20px;">Ubicación</h3>
+        <div style="margin-left: 20px;">
+          <a>
+            Av Siglo XIX 101, Fraccionamiento Lomas de Santa Anita, 20169 Aguascalientes, Ags.
+          </a>
+        </div>
+        <div class="divMap">
+          <div style="width: 100%; height: 100%; border-radius: 15px;" id="map"></div>
+        </div>
+
+        <h3 style="margin-left: 20px;">Síguenos</h3>
+        <div class="social-links">
+          <a style="color: black; font-size: 20px; display: flex; align-items: center;" href="https://www.facebook.com/people/AAA-Servicios-Y-Autopartes/100054597482933/">
+            Taller AAA
+          </a>
+          <a style="color: black; font-size: 20px; display: flex; align-items: center;">
+            <i style="color:black; font-size: 40px;" class='bx bxl-instagram'></i>
+            AAAsomos
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Formulario de contacto</h2>
+        <label for="title">Nombre*</label>
+        <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre">
+        <label for="title">Correo*</label>
+        <input type="email" class="form-control" name="email" ngModel placeholder="Correo">
+        <label for="title">Mensaje</label><br>
+        <textarea cols="100" rows="7" name="mensaje" ngModel></textarea>
+        <button class="buttonEnviar" type="submit"><i style="font-size: 25px;" class='bx bx-check-circle'></i>
+          ENVIAR</button>
+      </div>
+    </div>
+  </form>
+  <br>
+</div>
+<br>
+<br>
+

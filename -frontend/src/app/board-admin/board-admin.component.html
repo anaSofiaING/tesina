@@ -1,0 +1,50 @@
+<div class="container">
+     <br><br>
+
+     <div class="row justify-content-center">
+          <div class="col-md-auto">
+               <img src="../../assets/Perfil-usuario.png" alt="">
+          </div>
+
+          <div class="col-md-auto"><div class="text-danger" style="font-size:x-large; font-weight: bold;">{{user.username}}</div> <br>
+
+               ROL ADMINISTRADOR <br>
+               EMAIL: {{user.email}} <br>
+               CELULAR: {{user.celular}} <br>
+          </div>
+          <div class="col-md-auto">
+               <button class="btn" data-toggle="modal" data-target="#staticBackdrop"><img
+                         src="../../assets/Dir-editar.png" alt=""> Editar</button>
+
+               <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h5 class="modal-title" id="staticBackdropLabel">Cambiar Contraseña</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                   </button>
+                              </div>
+                              <div class="modal-body">
+                                   <div class="alert alert-primary" role="alert" *ngIf="mensaje">
+                                        {{mensaje}}
+                                   </div>
+                                   <div class="form-group">
+                                   <label for="contrasena">Nueva Contraseña</label>
+                                   <input type="password"  class="form-control" [(ngModel)]="contrasena" name="contrasena">
+                                   <label for="confContrasena">Confirmar Contraseña</label>
+                                   <input type="password"  class="form-control" [(ngModel)]="contrasenaConf" name="contrasenaConf"></div>
+                              </div>
+                              <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" (click)="reset()" data-dismiss="modal">Cerrar</button>
+                                   <button type="button" *ngIf="hecho" class="btn btn-success"
+                                        (click)="modificarContrasena()">Guardar</button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+</div>

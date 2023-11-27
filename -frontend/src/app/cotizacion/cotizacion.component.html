@@ -1,0 +1,64 @@
+<div class="container" *ngIf="showAdminBoard">
+  <br>
+  <div class="btn-toolbar justify-content-between">
+
+    <h3>COTIZACIONES</h3>
+    <button type="button" class="btn naranjita text-white" (click)="nuevaCotizacion()">Nueva Cotización</button>
+
+  </div>
+
+  <br>
+  <table class="table table-hover">
+    <thead style="background: rgb(180,175,175);
+    background: linear-gradient(90deg, rgba(180,175,175,0.9131302179074755) 100%, rgba(114,114,114,1) 100%);">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">FECHA</th>
+        <th scope="col">CLIENTE</th>
+        <th scope="col">VEHICULO</th>
+        <th scope="col">ESTATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cotizacion of cotizaciones;let i = index" (click)="detalles(cotizacion.id)">
+        <th scope="row">{{cotizacion.id}}</th>
+        <td>{{cotizacion.createdAt | date: 'd/M/yyyy'}} </td>
+        <td *ngIf="info && info[i]?.cliente">{{info[i].cliente}}</td>
+        <td *ngIf="info && info[i]?.tipo">{{info[i].tipo}}</td>
+        <td>{{cotizacion.estatus}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+<div class="container" *ngIf="showClientBoard">
+  <br>
+
+  <h3>COTIZACIONES</h3> <br>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">FECHA</th>
+        <th scope="col">VEHICULO</th>
+        <th scope="col">ESTATUS</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cotizacion of cotizaciones;let i = index" >
+        <th scope="row">{{cotizacion.id}}</th>
+        <td>{{cotizacion.createdAt | date: 'd/M/yyyy'}} </td>
+        <td ></td> 
+        <td >{{cotizacion.estatus}}</td>
+        <td class="btn-toolbar justify-content-around"><button class="btn btn-warning" (click)="detalles(cotizacion.id)"><img src="../../assets/verCot.png" alt="" srcset=""></button><button
+            class="btn btn-warning" (click)="aprobarCot(cotizacion.id)"><img src="../../assets/aprobarCot.png" alt="" srcset=""></button><button
+            class="btn btn-warning" (click)="rechazarCot(cotizacion.id)"><img src="../../assets/rechazarCot.png" alt="" srcset=""></button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

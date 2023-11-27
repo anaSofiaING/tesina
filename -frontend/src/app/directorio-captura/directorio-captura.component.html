@@ -1,0 +1,79 @@
+<div class="container">
+<div class="edit-form">
+  <br>
+    <h4>Crear Nuevo Cliente</h4>
+    <form>
+      <div class="form-group">
+        <br>
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          [(ngModel)]="nuevo.nombre"
+          name="nombre"
+        />
+      </div>
+      <div class="form-group">
+        <label for="celular">Celular</label>
+        <input
+          type="number"
+          class="form-control"
+          id="celular"
+          [(ngModel)]="nuevo.celular"
+          name="celular"
+        />
+      </div>
+     <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input
+          type="number"
+          class="form-control"
+          id="telefono"
+          [(ngModel)]="nuevo.telefono"
+          name="telefono"
+        />
+      </div>
+      <div class="form-group">
+        <label for="vehiculo">Vehiculo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="vehiculo"
+          [(ngModel)]="nuevo.vehiculo"
+          name="vehiculo"
+        />
+      </div>
+      <div class="form-group">
+        <label for="Observaciones">Observaciones</label>
+        <input
+          type="text"
+          class="form-control"
+          id="observaciones"
+          [(ngModel)]="nuevo.observaciones"
+          name="observaciones"
+        />
+      </div> 
+
+    </form>
+    
+    <button type="button"
+      class="btn btn-info " style="margin-right: 10px;"
+      (click)="regresar()"
+    >
+      Regresar
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-success "
+      (click)="crearNuevo()"
+    >
+      Guardar Cambios
+    </button>
+    <br>
+    <div class="alert alert-primary" *ngIf="message" role="alert">
+      {{message}}
+    </div>
+  </div>
+</div>

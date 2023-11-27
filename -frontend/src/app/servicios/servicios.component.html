@@ -1,0 +1,73 @@
+
+<div class="container" *ngIf="showWorkerBoard || showAdminBoard">
+  <br>
+  <div class="dropdown btn-toolbar justify-content-between">
+    
+  <h3>SERVICIOS</h3>
+    <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      <img src="../../assets/filtrarCitas.png" alt=""> Filtrar: {{opcion}}
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" (click)="retrieveCitas(1)">Activos</a>
+      <a class="dropdown-item" (click)="retrieveCitas(2)">Archivados</a>
+      <a class="dropdown-item" (click)="retrieveCitas(3)">Pendientes</a>
+      <a class="dropdown-item" (click)="retrieveCitas(4)">Todos</a>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered table-hover">
+    <thead style="background: rgb(180,175,175);
+    background: linear-gradient(90deg, rgba(180,175,175,0.9131302179074755) 100%, rgba(114,114,114,1) 100%);">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">CLIENTE</th>
+        <th scope="col">VEHICULO</th>
+        <th scope="col">COLOR</th>
+        <th scope="col">FECHA DE ENTRADA</th>
+        <th scope="col">FECHA DE SALIDA</th>
+        <th scope="col">ACCIONES</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas; let i = index" [class.active]="i == currentIndex" >
+        <th scope="row" (click)="detalles(cita.id,cita.vigente)">{{cita.id}}</th>
+        <td (click)="detalles(cita.id,cita.vigente)">{{cita.cliente}}</td>
+        <td (click)="detalles(cita.id,cita.vigente)">{{cita.marca}} {{cita.tipo}}</td>
+        <td (click)="detalles(cita.id,cita.vigente)">{{cita.color}} </td>
+        <td (click)="detalles(cita.id,cita.vigente)"> {{cita.f_entrada | date: 'd/M/yyyy'}} </td>
+        <td (click)="detalles(cita.id,cita.vigente)"> {{cita.f_salida | date: 'd/M/yyyy'}} </td>
+        <td  class="btn-toolbar justify-content-around"> <button class="btn" *ngIf="cita.vigente == 'Pendiente'" (click)="recibir(cita.id)" data-toggle="tooltip" data-placement="bottom" title="Recibida"><img src="../../assets/citaRecibida.png"
+              alt="" srcset=""></button> <button class="btn" *ngIf="cita.vigente == 'Activo' && showAdminBoard" (click)="archivar(cita.id)" data-toggle="tooltip" data-placement="bottom" title="Archivar"><img src="../../assets/citaArchivada.png" alt=""
+              srcset=""></button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" *ngIf="showClientBoard">
+  <br>
+  <h3>SERVICIOS</h3>
+  <br>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">CLIENTE</th>
+        <th scope="col">VEHICULO</th>
+        <th scope="col">PLACAS</th>
+        <th scope="col">FECHA DE ENTRADA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas; let i = index" [class.active]="i == currentIndex" (click)="detalles(cita.id,cita.vigente)">
+        <th scope="row">{{cita.id}}</th>
+        <td>{{cita.cliente}}</td>
+        <td>{{cita.tipo}}</td>
+        <td>{{cita.placas}} </td>
+        <td> {{cita.f_entrada | date: 'd/M/yyyy'}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
