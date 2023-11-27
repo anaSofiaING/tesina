@@ -1,12 +1,12 @@
 
 <div class="container">
-  <button (click)="exportToPdf()">Exportar a PDF</button>
-
+  <button (click)="exportToPdf()" class="btn btn-info">Exportar a PDF</button>
+ <br><br>
   <table class="table table-bordered" id="Micotizacion">
     <thead>
-      <tr>
-        <th scope="col">AAA</th>
-        <th scope="col" colspan="5">{{servicio.cliente}}</th>
+      <tr class="table-borderless">
+        <th scope="col"><img src="../../assets/logoCotizacion.png" width="140px" alt=""></th>
+        <th scope="col" colspan="5">Av. Siglo XIX #101, Lomas de Santa Anita, Aguascalientes, Ags. CP: 20164. <br>AEOA010413IM5 <br>4499750128</th>
         <th scope="col">Folio</th>
         <th scope="col" colspan="1"> {{cotizacion.id}}</th>
       </tr>
@@ -17,22 +17,22 @@
         <th scope="col" colspan="2"> {{cotizacion.createdAt | date: 'd/M/yyyy'}}</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody >
       <!-- Información del cliente y servicio -->
       <tr>
         <th scope="row">Celular</th>
         <td colspan="3">{{servicio.celular}}</td>
-        <td>Marca</td>
+        <th scope="row">Marca</th>
         <td>{{servicio.marca}}</td>
-        <td>Color</td>
+        <th scope="row">Color</th>
         <td>{{servicio.color}}</td>
       </tr>
       <tr>
         <th scope="row">Dirección</th>
         <td colspan="3"></td>
-        <td>Modelo</td>
+        <th scope="row">Modelo</th>
         <td>{{servicio.modelo}}</td>
-        <td>Placas</td>
+        <th scope="row">Placas</th>
         <td>{{servicio.placas}}</td>
       </tr>
       <tr>
@@ -44,8 +44,8 @@
         <td></td>
       </tr>
       <!-- Información de Productos/Servicios -->
-      <tr>
-        <th scope="row" colspan="5">Producto/Servicio</th>
+      <tr class="table-active">
+        <th scope="row" colspan="5" >Producto/Servicio</th>
         <th scope="row">Cantidad</th>
         <th scope="row">Precio Unitario</th>
         <th scope="row">Precio Total</th>
@@ -66,8 +66,8 @@
         <td colspan="2"><strong>IVA (16%):</strong></td>
         <td colspan="2">{{ iva | currency:'USD':'symbol':'1.2-2' }}</td>
       </tr>
-      <tr>
-        <td colspan="2"><strong>Total:</strong></td>
+      <tr >
+        <td colspan="2" class="table-active"><strong>Total:</strong></td>
         <td colspan="2">{{ cotizacion.total | currency:'USD':'symbol':'1.2-2' }}</td>
       </tr>
       <!-- Nota -->

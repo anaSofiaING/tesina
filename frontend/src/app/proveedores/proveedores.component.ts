@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProveedorService } from '../_services/proveedor.service';
 import { Proveedor } from '../models/proveedor';
 import { Router } from '@angular/router';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-proveedores',
@@ -22,11 +23,23 @@ export class ProveedoresComponent implements OnInit {
     direccion: '',
     notas: ''
   }
+  isLoggedIn = false;
+  private roles: string[] = [];
+  showAdminBoard = false;
+
 
   proveedores: Proveedor[] = [];
-  constructor(private proveedorService: ProveedorService,private router: Router) { }
+  constructor(private proveedorService: ProveedorService,private router: Router,private storageService:StorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    }
     this.iniciarDatos();
   }
 

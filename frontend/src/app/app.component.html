@@ -17,14 +17,11 @@
       \ \ \
     </ul>
 
-    <!--  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        <a href="/login" class="nav-link" routerLink="login">Inicar Sesión | Crear Cuenta</a>
       </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul> -->
+    </ul> 
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item" *ngIf="showClientBoard">
@@ -86,7 +83,7 @@
       
       <ul class="nav flex-column sticky-top">
         <li class="nav-item">
-          <a class="nav-link active" href="/detalles" routerLink="/detalles">DETALLES</a>
+          <a class="nav-link active" href="/detalles" routerLink="/detalles">TABLERO DE CONTROL</a>
         </li>
         <div class="dropdown-divider"></div>
         <li class="nav-item">
@@ -110,7 +107,7 @@
         </li>
         <div class="dropdown-divider"></div>
         <li class="nav-item">
-          <a class="nav-link" href="/administracion" routerLink="/administracion">ADMINISTRACION</a>
+         <!--  <a class="nav-link" href="/administracion" routerLink="/administracion">ADMINISTRACION</a> -->
         </li>
       </ul>
     </div>

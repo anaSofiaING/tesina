@@ -1,6 +1,6 @@
 Pasos para poder usar la app.
 
-- Tanto en la carpeta de backend y en la de frontend debemos ejecutar el comando ~ npm i
+- Tanto en la carpeta de backend y en la de frontend debemos ejecutar el comando ~ npm i --force
 
 - Para iniciar el servidor:
     ~ cd backend

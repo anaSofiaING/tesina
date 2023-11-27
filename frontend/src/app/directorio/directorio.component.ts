@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClienteService } from '../_services/cliente.service';
 import { Cliente } from '../models/cliente';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-directorio',
@@ -10,10 +11,23 @@ import { Cliente } from '../models/cliente';
 })
 export class DirectorioComponent implements OnInit {
   clientes: Cliente[] = [];
+  isLoggedIn = false;
+  
+  private roles: string[] = [];
+  showAdminBoard = false;
   buscaNombre:String='';
-  constructor(private clienteService : ClienteService, private router:Router) { }
+  constructor(private clienteService : ClienteService, 
+    private storageService: StorageService,private router:Router) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    }
     this.clienteService.getAll()
       .subscribe(
         (data: Cliente[]) => {

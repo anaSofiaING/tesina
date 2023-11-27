@@ -92,7 +92,8 @@ export class BitacoraComponent implements OnInit {
   progreso():void{
     const data = {
       cotizacionId: this.bitacora.cotizacionId,
-      pruebas: this.bitacora.pruebas
+      pruebas: this.bitacora.pruebas,
+      terminado: this.bitacora.terminado
     };
     
 

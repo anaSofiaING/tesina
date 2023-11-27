@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CitaService } from '../_services/cita.service';
 import { ClienteService } from '../_services/cliente.service';
 import { Chart, ChartType } from 'chart.js/auto';
+import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalles',
@@ -15,10 +17,23 @@ export class DetallesComponent implements OnInit {
   tClientes: number = 0; //total de clientes
   public chart!: Chart; //grafica comparativa de 2022 y 2023
   public chartServicios!: Chart; //grafica comparativa de 2022 y 2023 en servicios
+  isLoggedIn = false;
+  private roles: string[] = [];
+  showAdminBoard = false;
 
-  constructor(private citaService: CitaService, private clienteService: ClienteService) { }
+  constructor(private citaService: CitaService,private router:Router, private clienteService: ClienteService, private storageService:StorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    }else{
+        this.router.navigate(['/home']);
+    }
     this.getServicios();
     this.getClientes();
     this.graficaVentas();
